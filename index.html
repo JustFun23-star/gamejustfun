@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#128c62"><title>  Letsg0Chat — Komunikasi pribadi</title>
+<meta name="theme-color" content="#128c62"><title>  AnonimChat — Komunikasi pribadi</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{--green:#128c62;--green2:#e8f7f0;--ink:#172b25;--muted:#75847e;--line:#e8eeeb;--bg:#f4f7f5;--white:#fff;--danger:#d84b4b;--shadow:0 12px 40px #153c2b12}
@@ -17,8 +17,8 @@
 </style></head>
 <body>
 <section id="auth" class="authwrap"><div class="authcard">
- <div class="authlogo"><div class="brandname">Letsg0<span>Chat</span></div><p>Komunikasi pribadi, cepat, dan sederhana.</p></div>
- <div id="signupNotice" class="notice">Letsg0Chat menggunakan sistem undangan. Minta kode undangan dari pengelola untuk membuat akun.</div>
+ <div class="authlogo"><div class="brandname">Anonim<span>Chat</span></div><p>Komunikasi pribadi, cepat, dan sederhana.</p></div>
+ <div id="signupNotice" class="notice">AnonimChat menggunakan sistem undangan. Minta kode undangan dari pengelola untuk membuat akun.</div>
  <form id="authForm">
   <div class="field"><label>Alamat Gmail / Email</label><input id="email" type="email" placeholder="nama@gmail.com" autocomplete="email" required></div>
   <div class="field"><label>Password</label><input id="password" type="password" minlength="8" placeholder="Minimal 8 karakter" autocomplete="current-password" required></div>
@@ -27,13 +27,13 @@
   <button class="primary" id="authSubmit">Masuk</button>
  </form>
  <div class="switch"><span id="switchText">Belum punya akun?</span> <button class="linkbtn" id="switchMode" type="button">Daftar</button></div>
- <p class="small muted" style="text-align:center;margin-top:20px">Dengan masuk, kamu menyetujui penggunaan Letsg0Chat secara bertanggung jawab.</p>
+ <p class="small muted" style="text-align:center;margin-top:20px">Dengan masuk, kamu menyetujui penggunaan AnonimChat secara bertanggung jawab.</p>
 </div></section>
 <div id="app" class="app hidden">
- <aside class="sidebar"><div class="brand"><div class="brandname">Letsg0<span>Chat</span></div><div class="brand-actions"><button class="iconbtn" id="contactsBtn" title="Kontak">♙</button><button class="iconbtn" id="newChat" title="Chat baru">＋</button><button class="iconbtn" id="profileBtn" title="Profil">☻</button></div></div>
+ <aside class="sidebar"><div class="brand"><div class="brandname">Anonim<span>Chat</span></div><div class="brand-actions"><button class="iconbtn" id="contactsBtn" title="Kontak">♙</button><button class="iconbtn" id="newChat" title="Chat baru">＋</button><button class="iconbtn" id="profileBtn" title="Profil">☻</button></div></div>
  <div class="search"><input id="searchChats" placeholder="Cari percakapan..."></div><div class="listhead">Pesan</div><div id="chatList" class="chatlist"><div class="emptylist">Memuat percakapan...</div></div>
  <div style="padding:13px 17px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px"><div class="avatar" id="myAvatar">N</div><div style="flex:1;min-width:0"><strong id="myName">Pengguna</strong><div class="small muted" id="myEmail"></div></div><button class="iconbtn" id="logout" title="Keluar">↪</button></div></aside>
- <main class="main"><div id="welcome" class="welcome"><div class="welcome-mark">✉</div><h2>Selamat datang di Letsg0Chat</h2><p>Pilih percakapan di samping atau mulai chat baru untuk terhubung dengan teman.</p><button class="primary" style="max-width:190px" id="welcomeNew">Mulai chat</button></div>
+ <main class="main"><div id="welcome" class="welcome"><div class="welcome-mark">✉</div><h2>Selamat datang di AnonimChat</h2><p>Pilih percakapan di samping atau mulai chat baru untuk terhubung dengan teman.</p><button class="primary" style="max-width:190px" id="welcomeNew">Mulai chat</button></div>
  <section id="chatView" class="chatview hidden"><header class="chathead"><button class="iconbtn mobileback" id="backChats">‹</button><div class="avatar" id="peerAvatar">N</div><div class="details"><strong id="peerName">Percakapan</strong><span class="small muted" id="peerStatus"> </span></div><button class="iconbtn" id="chatInfo" title="Info">ⓘ</button></header><div class="messages" id="messages"></div><div class="typing" id="typing"></div><form class="composer" id="messageForm"><input type="file" id="attachment" class="hidden" accept="image/*,.pdf,.doc,.docx,.txt"><button type="button" class="iconbtn" id="attachBtn" title="Lampirkan file">＋</button><textarea id="messageInput" rows="1" placeholder="Tulis pesan..." maxlength="10000"></textarea><button class="send" type="submit">Kirim</button></form></section></main>
 </div>
 <div id="modalRoot"></div><div id="toast" class="toast hidden"></div>
@@ -163,7 +163,7 @@ $('messageForm').onsubmit=async e=>{
 $('attachBtn').onclick=()=>$('attachment').click();
 $('attachment').onchange=e=>{if(e.target.files[0])toast('Lampiran dipilih: '+e.target.files[0].name)};
 async function manageContacts(){
- $('modalRoot').innerHTML=`<div class="modalback" id="contactsBack"><div class="modal wide"><h3>Kontak Letsg0Chat</h3><p class="small muted">Cari teman berdasarkan nama atau email, lalu tambahkan agar mudah ditemukan lagi.</p><div class="field"><label>Cari pengguna</label><input id="contactSearch" type="search" placeholder="Ketik nama atau email (min. 2 karakter)" autocomplete="off"></div><div id="contactResults" class="userresults"><div class="emptylist">Memuat kontak...</div></div><div class="modalfoot"><button class="secondary" id="closeContacts">Tutup</button></div></div></div>`;
+ $('modalRoot').innerHTML=`<div class="modalback" id="contactsBack"><div class="modal wide"><h3>Kontak AnonimChat</h3><p class="small muted">Cari teman berdasarkan nama atau email, lalu tambahkan agar mudah ditemukan lagi.</p><div class="field"><label>Cari pengguna</label><input id="contactSearch" type="search" placeholder="Ketik nama atau email (min. 2 karakter)" autocomplete="off"></div><div id="contactResults" class="userresults"><div class="emptylist">Memuat kontak...</div></div><div class="modalfoot"><button class="secondary" id="closeContacts">Tutup</button></div></div></div>`;
  const close=()=>$('modalRoot').innerHTML='';$('closeContacts').onclick=close;$('contactsBack').onclick=e=>{if(e.target.id==='contactsBack')close()};
  await refreshContacts();
  const input=$('contactSearch');let debounce=null;
@@ -177,7 +177,7 @@ function renderContactResults(rows,isContacts=false){
  const box=$('contactResults');if(!box)return;
  if(!rows.length){box.innerHTML=`<div class="emptylist">${isContacts?'Belum ada kontak. Cari nama atau email teman di atas.':'Tidak ada pengguna yang cocok.'}</div>`;return}
  const saved=new Set(contactRows.map(x=>x.id));
- box.innerHTML=rows.map(x=>`<div class="userresult"><div class="avatar">${esc(initials(x.full_name))}</div><div class="usertext"><strong>${esc(x.full_name||'Pengguna')}</strong><span>${esc(x.email||x.bio||'Pengguna Letsg0Chat')}</span></div>${saved.has(x.id)?`<button data-chat="${esc(x.id)}">Chat</button><button data-remove="${esc(x.id)}" title="Hapus kontak">×</button>`:`<button data-add="${esc(x.id)}">Tambah</button>`}</div>`).join('');
+ box.innerHTML=rows.map(x=>`<div class="userresult"><div class="avatar">${esc(initials(x.full_name))}</div><div class="usertext"><strong>${esc(x.full_name||'Pengguna')}</strong><span>${esc(x.email||x.bio||'Pengguna AnonimChat')}</span></div>${saved.has(x.id)?`<button data-chat="${esc(x.id)}">Chat</button><button data-remove="${esc(x.id)}" title="Hapus kontak">×</button>`:`<button data-add="${esc(x.id)}">Tambah</button>`}</div>`).join('');
  box.querySelectorAll('[data-add]').forEach(b=>b.onclick=async()=>{b.disabled=true;try{const {error}=await sb.from('contacts').insert({owner_id:user.id,contact_id:b.dataset.add});if(error&&error.code!=='23505')throw error;await refreshContacts();toast('Kontak berhasil ditambahkan.')}catch(e){fail(e)}finally{b.disabled=false}});
  box.querySelectorAll('[data-remove]').forEach(b=>b.onclick=async()=>{try{const {error}=await sb.from('contacts').delete().eq('owner_id',user.id).eq('contact_id',b.dataset.remove);if(error)throw error;await refreshContacts();toast('Kontak dihapus.')}catch(e){fail(e)}});
  box.querySelectorAll('[data-chat]').forEach(b=>b.onclick=async()=>{try{const {data,error}=await sb.rpc('create_direct_conversation',{other_user:b.dataset.chat});if(error)throw error;$('modalRoot').innerHTML='';await loadConversations();const exists=conversations.find(c=>c.id===data);if(exists)await openConversation(data);else{await loadConversations();await openConversation(data)}toast('Percakapan siap.')}catch(e){fail(e)}});
@@ -195,7 +195,7 @@ function modal(title,body,submit){
  $('cancelModal').onclick=()=>$('modalRoot').innerHTML='';$('modalBack').onclick=e=>{if(e.target.id==='modalBack')$('modalRoot').innerHTML=''};$('submitModal').onclick=async()=>{try{await submit()}catch(e){fail(e)}};
 }
 async function startDirect(){
- modal('Mulai chat baru',`<div class="field"><label>Email pengguna yang sudah terdaftar</label><input id="targetEmail" type="email" placeholder="teman@gmail.com"></div><p class="small muted">Pengguna harus sudah memiliki akun Letsg0Chat.</p>`,async()=>{
+ modal('Mulai chat baru',`<div class="field"><label>Email pengguna yang sudah terdaftar</label><input id="targetEmail" type="email" placeholder="teman@gmail.com"></div><p class="small muted">Pengguna harus sudah memiliki akun AnonimChat.</p>`,async()=>{
  const email=$('targetEmail').value.trim().toLowerCase();if(!email)throw Error('Masukkan email pengguna.');
  const {data:target,error}=await sb.rpc('find_user_by_email',{lookup_email:email});if(error)throw error;if(!target?.length)throw Error('Pengguna tidak ditemukan.');
  const {data,error:e}=await sb.rpc('create_direct_conversation',{other_user:target[0].id});if(e)throw e;$('modalRoot').innerHTML='';await loadConversations();await openConversation(data);toast('Percakapan siap.');
